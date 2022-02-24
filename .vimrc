@@ -44,3 +44,4 @@ let g:lightline = {
       \ }
 colorscheme PaperColor
 set background=dark
+vimspector
