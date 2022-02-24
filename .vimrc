@@ -25,6 +25,7 @@ Plug 'mxw/vim-jsx'
 Plug 'jiangmiao/auto-pairs'
 Plug 'morhetz/gruvbox'
 Plug 'flazz/vim-colorschemes'
+Plug 'puremourning/vimspector'
 call plug#end()
 
 let g:jsx_ext_required = 1
