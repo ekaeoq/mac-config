@@ -3,3 +3,4 @@ my go-to .vimrc file that i'd fly to the moon and back to get in case I forgor,o
 ![Screenshot 2021-10-15 at 05 18 01](https://user-images.githubusercontent.com/46292172/137426949-19e402c1-32e0-47b3-a0f2-c501c3993dcd.png)
 "+y
 ?, /, n
+:%s/\<foo\>/bar/gc
