@@ -4,5 +4,5 @@ my go-to .vimrc file that i'd fly to the moon and back to get in case I forgor,o
 "+y
 ?, /, n
 
-```:%s/\<foo\>/bar/gc```
+```:%s/\<foo\>/bar/gc```<br>
 ```ls -lt```
