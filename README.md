@@ -4,5 +4,5 @@ my go-to .vimrc file that i'd fly to the moon and back to get in case I forgor,o
 ```"+y```<br>
 ```/, n, N```<br>
 ```:%s/\<foo\>/bar/gc```<br>
-```ls -lt```
-```Karabinder-elements```
+```ls -lt```<br>
+```Karabinder-elements```<br>
