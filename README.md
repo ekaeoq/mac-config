@@ -7,3 +7,4 @@ my go-to .vimrc file that i'd fly to the moon and back to get in case I forgor,o
 ```ls -lt```<br>
 ```Karabinder-elements```<br>
 ```REMEMBER```to use```Image Capture```
+```$\hspace{5pt}$``` whitespace indent for markdown
