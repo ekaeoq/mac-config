@@ -26,10 +26,19 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'morhetz/gruvbox'
 Plug 'flazz/vim-colorschemes'
 Plug 'puremourning/vimspector'
-"Plug 'brokenpylons/vim-reloaded'
+Plug 'sbdchd/neoformat'
+Plug 'dense-analysis/ale'
 call plug#end()
 
 let g:jsx_ext_required = 1
+let g:neoformat_try_node_exe = 1
+let g:ale_fixers = {
+\   'javascript': ['prettier'],
+\   'css': ['prettier'],
+\}
+let g:ale_linters_explicit = 1
+let g:ale_fix_on_save = 1
+let g:ale_javascript_prettier_options = '--single-quote --trailing-comma all'
 "nerdTREE
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
@@ -40,10 +49,21 @@ if !has('gui_running')
   set t_Co=256
 endif
 
-let g:lightline = {
-      \ 'colorscheme': 'seoul256',
-      \ }
 colorscheme PaperColor
-set background=dark
+
+let g:lightline = {
+      \ 'colorscheme': 'ayu_light',
+	  \ }
+
+"let g:lightline = {
+"      \ 'colorscheme': 'seoul256',
+"      \ }
+"
+set background=light
 "vimspector
 "PaperColor
+autocmd BufWritePre *.js Neoformat
+autocmd FileType javascript setlocal formatprg=prettier\ --single-quote\ --trailing-comma\ es5
+" Use formatprg when available
+let g:neoformat_try_formatprg = 1
+
