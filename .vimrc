@@ -28,6 +28,7 @@ Plug 'flazz/vim-colorschemes'
 Plug 'puremourning/vimspector'
 Plug 'sbdchd/neoformat'
 Plug 'dense-analysis/ale'
+Plug 'tpope/vim-commentary'
 call plug#end()
 
 let g:jsx_ext_required = 1
@@ -51,14 +52,71 @@ endif
 
 colorscheme PaperColor
 
-let g:lightline = {
-      \ 'colorscheme': 'ayu_light',
-	  \ }
+" let g:lightline = {
+"       \ 'colorscheme': 'ayu_light',
+" 	  \ }
 
 "let g:lightline = {
 "      \ 'colorscheme': 'seoul256',
 "      \ }
 "
+" The following line originally set a custom colorscheme name,
+" but since no theme file 'mycustom' exists, it is commented out.
+" let g:lightline = {
+"      \ 'colorscheme': 'mycustom',
+"      \ }
+
+function! MyLightlineColors()
+    return {
+        \ 'normal': {
+        \   'left':  [ [ '#282c34', '#abb2bf' ], [ '#98c379', '#282c34' ] ],
+        \   'middle': [ [ '#5c6370', '#3e4451' ] ],
+        \   'right': [ [ '#282c34', '#98c379' ], [ '#abb2bf', '#282c34' ] ]
+        \ },
+        \ 'insert': {
+        \   'left':  [ [ '#282c34', '#61afef' ], [ '#61afef', '#282c34' ] ],
+        \   'middle': [ [ '#5c6370', '#3e4451' ] ],
+        \   'right': [ [ '#282c34', '#61afef' ], [ '#abb2bf', '#282c34' ] ]
+        \ },
+        \ 'visual': {
+        \   'left':  [ [ '#282c34', '#c678dd' ], [ '#c678dd', '#282c34' ] ],
+        \   'right': [ [ '#282c34', '#c678dd' ], [ '#abb2bf', '#282c34' ] ]
+        \ },
+        \ 'replace': {
+        \   'left':  [ [ '#282c34', '#e06c75' ], [ '#e06c75', '#282c34' ] ],
+        \   'right': [ [ '#282c34', '#e06c75' ], [ '#abb2bf', '#282c34' ] ]
+        \ },
+        \ 'inactive': {
+        \   'left':  [ [ '#5c6370', '#282c34' ], [ '#5c6370', '#282c34' ] ],
+        \   'middle': [ [ '#5c6370', '#3e4451' ] ],
+        \   'right': [ [ '#5c6370', '#282c34' ], [ '#5c6370', '#282c34' ] ]
+        \ }
+    \ }
+endfunction
+
+" The following autocmd using lightline#colorscheme#apply causes errors,
+" so it is commented out.
+" autocmd VimEnter * call lightline#colorscheme#apply('mycustom', MyLightlineColors())
+
+" ===================================================================
+" Working Custom Lightline Theme Assignment
+" Ensure g:lightline is defined before assigning its keys.
+if !exists("g:lightline")
+    let g:lightline = {}
+endif
+
+let g:lightline.active = {
+      \ 'left': [ [ '#282c34', '#abb2bf' ], [ '#98c379', '#282c34' ] ],
+      \ 'middle': [ [ '#5c6370', '#3e4451' ] ],
+      \ 'right': [ [ '#282c34', '#98c379' ], [ '#abb2bf', '#282c34' ] ]
+      \ }
+let g:lightline.inactive = {
+      \ 'left': [ [ '#5c6370', '#282c34' ], [ '#5c6370', '#282c34' ] ],
+      \ 'middle': [ [ '#5c6370', '#3e4451' ] ],
+      \ 'right': [ [ '#5c6370', '#282c34' ], [ '#5c6370', '#282c34' ] ]
+      \ }
+" ===================================================================
+
 set background=light
 "vimspector
 "PaperColor
@@ -66,4 +124,6 @@ autocmd BufWritePre *.js Neoformat
 autocmd FileType javascript setlocal formatprg=prettier\ --single-quote\ --trailing-comma\ es5
 " Use formatprg when available
 let g:neoformat_try_formatprg = 1
+
+
 
