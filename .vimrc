@@ -52,78 +52,53 @@ endif
 
 colorscheme PaperColor
 
-" let g:lightline = {
-"       \ 'colorscheme': 'ayu_light',
-" 	  \ }
-
-"let g:lightline = {
-"      \ 'colorscheme': 'seoul256',
-"      \ }
-"
-" The following line originally set a custom colorscheme name,
-" but since no theme file 'mycustom' exists, it is commented out.
-" let g:lightline = {
-"      \ 'colorscheme': 'mycustom',
-"      \ }
-
-function! MyLightlineColors()
-    return {
-        \ 'normal': {
-        \   'left':  [ [ '#282c34', '#abb2bf' ], [ '#98c379', '#282c34' ] ],
-        \   'middle': [ [ '#5c6370', '#3e4451' ] ],
-        \   'right': [ [ '#282c34', '#98c379' ], [ '#abb2bf', '#282c34' ] ]
-        \ },
-        \ 'insert': {
-        \   'left':  [ [ '#282c34', '#61afef' ], [ '#61afef', '#282c34' ] ],
-        \   'middle': [ [ '#5c6370', '#3e4451' ] ],
-        \   'right': [ [ '#282c34', '#61afef' ], [ '#abb2bf', '#282c34' ] ]
-        \ },
-        \ 'visual': {
-        \   'left':  [ [ '#282c34', '#c678dd' ], [ '#c678dd', '#282c34' ] ],
-        \   'right': [ [ '#282c34', '#c678dd' ], [ '#abb2bf', '#282c34' ] ]
-        \ },
-        \ 'replace': {
-        \   'left':  [ [ '#282c34', '#e06c75' ], [ '#e06c75', '#282c34' ] ],
-        \   'right': [ [ '#282c34', '#e06c75' ], [ '#abb2bf', '#282c34' ] ]
-        \ },
-        \ 'inactive': {
-        \   'left':  [ [ '#5c6370', '#282c34' ], [ '#5c6370', '#282c34' ] ],
-        \   'middle': [ [ '#5c6370', '#3e4451' ] ],
-        \   'right': [ [ '#5c6370', '#282c34' ], [ '#5c6370', '#282c34' ] ]
-        \ }
-    \ }
-endfunction
-
-" The following autocmd using lightline#colorscheme#apply causes errors,
-" so it is commented out.
-" autocmd VimEnter * call lightline#colorscheme#apply('mycustom', MyLightlineColors())
-
-" ===================================================================
-" Working Custom Lightline Theme Assignment
-" Ensure g:lightline is defined before assigning its keys.
-if !exists("g:lightline")
-    let g:lightline = {}
-endif
-
-let g:lightline.active = {
-      \ 'left': [ [ '#282c34', '#abb2bf' ], [ '#98c379', '#282c34' ] ],
-      \ 'middle': [ [ '#5c6370', '#3e4451' ] ],
-      \ 'right': [ [ '#282c34', '#98c379' ], [ '#abb2bf', '#282c34' ] ]
-      \ }
-let g:lightline.inactive = {
-      \ 'left': [ [ '#5c6370', '#282c34' ], [ '#5c6370', '#282c34' ] ],
-      \ 'middle': [ [ '#5c6370', '#3e4451' ] ],
-      \ 'right': [ [ '#5c6370', '#282c34' ], [ '#5c6370', '#282c34' ] ]
-      \ }
-" ===================================================================
 
 set background=light
+
+" Define color names with hex codes and 256-color indices for mycustom2"
+let s:mycolor9 = [ '#0066ff', 33 ]  " Light blue background"
+let s:mycolor10 = [ '#ffffff', 15 ]  " White text"
+let s:mycolor11 = [ '#ffff00', 11 ]  " Yellow text"
+let s:mycolor12 = [ '#cccccc', 252 ]  " Light gray for middle"
+let s:mycolor13 = [ '#555555', 240 ]  " Dark gray for middle"
+let s:mycolor14 = [ '#00ff00', 10 ]  " Bright green for insert"
+let s:mycolor15 = [ '#ff00ff', 13 ]  " Bright magenta for visual"
+let s:mycolor16 = [ '#ff0000', 9 ]  " Bright red for replace"
+let s:mycolor17 = [ '#888888', 245 ]  " Gray for inactive background"
+let s:mycolor18 = [ '#000000', 0 ]  " Black for inactive text"
+
+let g:lightline#colorscheme#mycustom2#palette = {
+    \ 'normal': {
+    \   'left': [ ['white', 'blue', 15, 33], ['black', 'gray', 0, 252] ],
+    \   'middle': [ ['darkgray', 'lightgray', 240, 252] ],
+    \   'right': [ ['black', 'gray', 0, 252], ['white', 'blue', 15, 33] ]
+    \ },
+    \ 'insert': {
+    \   'left': [ ['white', 'green', 15, 10], ['black', 'gray', 0, 252] ],
+    \   'middle': [ ['darkgray', 'lightgray', 240, 252] ],
+    \   'right': [ ['black', 'gray', 0, 252], ['white', 'green', 15, 10] ]
+    \ },
+    \ 'visual': {
+    \   'left': [ ['white', 'magenta', 15, 13], ['black', 'gray', 0, 252] ],
+    \   'middle': [ ['darkgray', 'lightgray', 240, 252] ],
+    \   'right': [ ['black', 'gray', 0, 252], ['white', 'magenta', 15, 13] ]
+    \ },
+    \ 'replace': {
+    \   'left': [ ['white', 'red', 15, 9], ['black', 'gray', 0, 252] ],
+    \   'middle': [ ['darkgray', 'lightgray', 240, 252] ],
+    \   'right': [ ['black', 'gray', 0, 252], ['white', 'red', 15, 9] ]
+    \ },
+    \ 'inactive': {
+    \   'left': [ ['black', 'gray', 0, 245], ['black', 'gray', 0, 245] ],
+    \   'middle': [ ['black', 'gray', 0, 245] ],
+    \   'right': [ ['black', 'gray', 0, 245], ['black', 'gray', 0, 245] ]
+    \ }
+\}
+
+let g:lightline = { 'colorscheme': 'mycustom2' }
+
 "vimspector
 "PaperColor
 autocmd BufWritePre *.js Neoformat
 autocmd FileType javascript setlocal formatprg=prettier\ --single-quote\ --trailing-comma\ es5
-" Use formatprg when available
 let g:neoformat_try_formatprg = 1
-
-
-
