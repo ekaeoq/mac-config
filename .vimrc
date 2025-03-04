@@ -95,7 +95,46 @@ let g:lightline#colorscheme#mycustom2#palette = {
     \ }
 \}
 
+let g:lightline#colorscheme#gruvboxlike#palette = {
+    \ 'normal': {
+    \   'left': [ ['#ffffff', '#83a598', 15, 109] ],
+    \   'middle': [ ['#a89984', '#282828', 137, 235] ],
+    \   'right': [ ['#ebdbb2', '#282828', 250, 235] ]
+    \ },
+    \ 'insert': {
+    \   'left': [ ['#ffffff', '#8ec07c', 15, 108] ],
+    \   'middle': [ ['#a89984', '#282828', 137, 235] ],
+    \   'right': [ ['#ebdbb2', '#282828', 250, 235] ]
+    \ },
+    \ 'visual': {
+    \   'left': [ ['#ffffff', '#d3869b', 15, 175] ],
+    \   'middle': [ ['#a89984', '#282828', 137, 235] ],
+    \   'right': [ ['#ebdbb2', '#282828', 250, 235] ]
+    \ },
+    \ 'replace': {
+    \   'left': [ ['#ffffff', '#cc241d', 15, 160] ],
+    \   'middle': [ ['#a89984', '#282828', 137, 235] ],
+    \   'right': [ ['#ebdbb2', '#282828', 250, 235] ]
+    \ },
+    \ 'inactive': {
+    \   'left': [ ['#a89984', '#3c3836', 137, 237] ],
+    \   'middle': [ ['#a89984', '#3c3836', 137, 237] ],
+    \   'right': [ ['#a89984', '#3c3836', 137, 237] ]
+    \ }
+\}
+
 let g:lightline = { 'colorscheme': 'mycustom2' }
+let g:lightline = { 'colorscheme': 'gruvboxlike' }
+
+let g:lightline = {
+      \ 'colorscheme': 'ayu_light',
+      \ }
+
+let g:lightline = {
+      \ 'colorscheme': 'one',
+      \ }
+
+"rosepine
 
 "vimspector
 "PaperColor
