@@ -20,7 +20,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'jcherven/jummidark.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'ervandew/supertab'
-Plug 'valloric/youcompleteme'
+"Plug 'valloric/youcompleteme'
 Plug 'mxw/vim-jsx'
 Plug 'jiangmiao/auto-pairs'
 Plug 'morhetz/gruvbox'
@@ -28,8 +28,9 @@ Plug 'flazz/vim-colorschemes'
 Plug 'puremourning/vimspector'
 Plug 'sbdchd/neoformat'
 Plug 'dense-analysis/ale'
-Plug 'tpope/vim-commentary'
+Plug 'lervag/vimtex'
 call plug#end()
+
 
 let g:jsx_ext_required = 1
 let g:neoformat_try_node_exe = 1
@@ -53,7 +54,7 @@ endif
 colorscheme PaperColor
 
 
-set background=light
+set background=dark
 
 " Define color names with hex codes and 256-color indices for mycustom2"
 let s:mycolor9 = [ '#0066ff', 33 ]  " Light blue background"
@@ -134,6 +135,15 @@ let g:lightline = {
       \ 'colorscheme': 'one',
       \ }
 
+let g:vimtex_compiler_latexmk = {
+    \ 'options' : [
+    \   '-pdf',
+    \   '-pvc',
+    \   '-interaction=nonstopmode',
+    \ ],
+    \}
+
+
 "rosepine
 
 "vimspector
@@ -141,3 +151,24 @@ let g:lightline = {
 autocmd BufWritePre *.js Neoformat
 autocmd FileType javascript setlocal formatprg=prettier\ --single-quote\ --trailing-comma\ es5
 let g:neoformat_try_formatprg = 1
+
+
+" VimTeX configuration
+let g:vimtex_view_method = 'skim'  " Use Skim as the PDF viewer
+let g:vimtex_compiler_method = 'latexmk'  " Use latexmk for compilation
+let g:tex_flavor = 'latex'  " Default to LaTeX
+" Configure latexmk options for continuous preview
+let g:vimtex_compiler_latexmk = {
+    \ 'options' : [
+    \   '-pdf',
+    \   '-pvc',
+    \   '-interaction=nonstopmode',
+    \ ],
+    \}
+" Auto-save on text changes for live updates
+autocmd TextChanged,TextChangedI *.tex silent write
+set updatetime=500  " Update every 500ms
+syntax enable
+filetype plugin indent on
+nmap <leader>c :VimtexCompile<CR>  
+" Map \c to start/stop compilation
